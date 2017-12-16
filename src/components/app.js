@@ -12,7 +12,7 @@ angular.module('video-player')
   //              this.selectVideo function
 
 
-  controller: function() {
+  controller: function(youTube) {
     this.videos = window.exampleVideoData;
     this.currentVideo = window.exampleVideoData[0];
     this.selectVideo = function() {};
@@ -23,7 +23,7 @@ angular.module('video-player')
       this.currentVideo = video;
       this.frameUrl = 'https://www.youtube.com/embed/' + video.id.videoId;
     }.bind(this); 
-  
+    this.result = youTube.searchYoutube();
   } 
 });
 
