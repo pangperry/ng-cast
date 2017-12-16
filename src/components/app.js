@@ -15,6 +15,7 @@ angular.module('video-player')
   controller: function(youTube) {
     this.videos = exampleVideoData;
     this.currentVideo = this.videos[0];
+    this.queryValue = '';
 
     this.selectVideo = function(video) {
       this.currentVideo = video;
@@ -26,7 +27,6 @@ angular.module('video-player')
     this.onClick = function(video) {
       console.log('onClick working');
       this.selectVideo(video);
-        
     }.bind(this); 
     
     this.onSearch = function(videos) {
@@ -34,7 +34,13 @@ angular.module('video-player')
       this.selectVideo(videos[0]);
     }.bind(this);
 
-    this.result = youTube.search(this.onSearch);
+    this.onSearchButton = function(text) {
+      console.log('clicked');
+      this.queryValue = text;
+      youTube.search(this.onSearch, this.queryValue);      
+    }.bind(this);
+
+    this.result = youTube.search(this.onSearch, this.queryValue);
  
   }
 });
