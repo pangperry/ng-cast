@@ -4,7 +4,7 @@ angular.module('video-player')
 
   bindings: {
     video: '<',
-    handler: '<',
+    onClick: '<',
   },
   // controller: function() {
   //   this.handler = $ctrl.handler;

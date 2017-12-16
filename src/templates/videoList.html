@@ -1,5 +1,5 @@
 <ul class="video-list" >
-  <video-list-entry handler="$ctrl.handler" ng-repeat="video in $ctrl.videos" video=video></video-list-entry>
+  <video-list-entry on-click="$ctrl.onClick" ng-repeat="video in $ctrl.videos" video=video></video-list-entry>
 </ul>
 
 

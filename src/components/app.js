@@ -18,7 +18,8 @@ angular.module('video-player')
     this.selectVideo = function() {};
     this.searchResults = function() {};
     this.frameUrl = 'https://www.youtube.com/embed/' + this.currentVideo.id.videoId;
-    this.handler = function(video) {
+    this.onClick = function(video) {
+      console.log('onClick working');
       this.currentVideo = video;
       this.frameUrl = 'https://www.youtube.com/embed/' + video.id.videoId;
     }.bind(this); 
