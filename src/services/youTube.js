@@ -6,16 +6,14 @@ angular.module('video-player')
                        max: 5,
                        q: 'dog'};
   
-  this.searchYoutube = function() {
+  this.search = function(cb) {
     $http.get('https://www.googleapis.com/youtube/v3/search', {params: this.searchConfig})
-  
-    .then(function(response) {
-      console.log('getting the daaata');
-      console.log(response);
-    },
-    function(response) {
-      console.log('you FAILED !');
-    });
+      .then(function(response) {
+        cb(response.data.items);
+      },
+      function(response) {
+        console.log('you FAILED !');
+      });
 
   };
     // $scope.videos = response.data.items;

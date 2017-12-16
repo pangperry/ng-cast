@@ -13,19 +13,28 @@ angular.module('video-player')
 
 
   controller: function(youTube) {
-    this.videos = window.exampleVideoData;
-    this.currentVideo = window.exampleVideoData[0];
-    this.selectVideo = function() {};
-    this.searchResults = function() {};
-    this.frameUrl = 'https://www.youtube.com/embed/' + this.currentVideo.id.videoId;
-    this.onClick = function(video) {
-      console.log('onClick working');
+    this.videos = exampleVideoData;
+    this.currentVideo = this.videos[0];
+
+    this.selectVideo = function(video) {
       this.currentVideo = video;
       this.frameUrl = 'https://www.youtube.com/embed/' + video.id.videoId;
-    }.bind(this); 
-    this.result = youTube.searchYoutube();
-  } 
-});
+    };
 
-//write a handler in this controller to set this.currentVideo
-//to the video we click on in videolistentry
+    this.searchResults = function() {};
+    
+    this.onClick = function(video) {
+      console.log('onClick working');
+      this.selectVideo(video);
+        
+    }.bind(this); 
+    
+    this.onSearch = function(videos) {
+      this.videos = videos;
+      this.selectVideo(videos[0]);
+    }.bind(this);
+
+    this.result = youTube.search(this.onSearch);
+ 
+  }
+});
