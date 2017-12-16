@@ -17,8 +17,14 @@ angular.module('video-player')
     this.currentVideo = window.exampleVideoData[0];
     this.selectVideo = function() {};
     this.searchResults = function() {};
-    this.frameUrl = 'https://www.youtube.com/embed/' + this.currentVideo.id.videoId;  
+    this.frameUrl = 'https://www.youtube.com/embed/' + this.currentVideo.id.videoId;
+    this.handler = function(video) {
+      this.currentVideo = video;
+      this.frameUrl = 'https://www.youtube.com/embed/' + video.id.videoId;
+    }.bind(this); 
+  
   } 
 });
 
-
+//write a handler in this controller to set this.currentVideo
+//to the video we click on in videolistentry

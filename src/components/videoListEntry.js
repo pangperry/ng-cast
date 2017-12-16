@@ -3,6 +3,13 @@ angular.module('video-player')
   templateUrl: 'src/templates/videoListEntry.html',
 
   bindings: {
-    video: '<'
-  }
+    video: '<',
+    handler: '<',
+  },
+  // controller: function() {
+  //   this.handler = $ctrl.handler;
+  // }
 });
+
+
+// bind the handler
